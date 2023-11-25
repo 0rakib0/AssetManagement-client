@@ -1,51 +1,70 @@
 import { updateProfile } from "firebase/auth";
 import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.config";
+import Swal from "sweetalert2";
 
 const RegisterAdmin = () => {
 
-    const {Register} = useAuth()
+    const { Register } = useAuth()
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         event.preventDefault()
         const form = event.target;
         const full_name = form.fullName.value
         const companyName = form.companyName.value
         const comapnyLogo = form.companyLogo.value
         const email = form.email.value
-        const password = form.password.value 
+        const password = form.password.value
         const dob = form.dob.value
         const memberpackage = form.package.value
 
         const AdminInfo = {
-            full_name, 
-            comapnyLogo, 
-            companyName, 
-            email, 
-            memberpackage, 
+            full_name,
+            comapnyLogo,
+            companyName,
+            email,
+            memberpackage,
             dob,
             isAdmin: true
         }
         console.log(AdminInfo)
         Register(email, password)
-        .then(result =>{
-            const user = result.user
-            updateProfile(auth.currentUser, {
-                displayName: full_name,
-                photoURL: comapnyLogo
+            .then(result => {
+                const user = result.user
+                updateProfile(auth.currentUser, {
+                    displayName: full_name,
+                    photoURL: comapnyLogo
+                })
+                    .then(() => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Admin Successfully Register",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "error",
+                            title: `Error: ${error.message}`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
+                console.log(user)
             })
-            .then(() =>{
-                console.log('Profile Successfully Update')
+            .catch(error => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: `Error: ${error.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
-            .catch(error =>{
-                console.log(error)
-            })
-            console.log(user)
-        })
-        .catch(error =>{
-            console.log(error.message)
-        })
-        
+
     }
 
     return (
