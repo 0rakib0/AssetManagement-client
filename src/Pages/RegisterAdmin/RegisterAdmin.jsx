@@ -13,33 +13,33 @@ const RegisterAdmin = () => {
                             <label className="label">
                                 <span className="label-text text-white">Full Name</span>
                             </label>
-                            <input type="text" placeholder="Full Name" name="fullName" className="input input-bordered" required />
+                            <input type="text" placeholder="Full Name" name="fullName" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Company Name</span>
                             </label>
-                            <input type="text" placeholder="Company Name" name="companyName" className="input input-bordered" required />
+                            <input type="text" placeholder="Company Name" name="companyName" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Company Logo URL</span>
                             </label>
-                            <input type="text" placeholder="Company Logo URL" name="companyLogo" className="input input-bordered" required />
+                            <input type="text" placeholder="Company Logo URL" name="companyLogo" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" placeholder="email" className="input input-bordered border-thirdColor bg-primaryColor" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" placeholder="password" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Date Of Birth</span>
                             </label>
-                            <input type="date" name="dob" className="input input-bordered" required />
+                            <input type="date" name="dob" className="input input-bordered border-thirdColor bg-primaryColor text-white" required />
                             <label className="label">
                                 <span className="label-text text-white">Select a package</span>
                             </label>
-                            <select className="input input-bordered" name="package" id="">
+                            <select className="input input-bordered border-thirdColor bg-primaryColor text-white" name="package" id="">
                                 <option value="5">5 Members for $5</option>
                                 <option value="8">10 Members for $8</option>
                                 <option value="18">20 Members for $15</option>

@@ -14,21 +14,21 @@ const RegisterEmp = () => {
                             <label className="label">
                                 <span className="label-text text-white">Full Name</span>
                             </label>
-                            <input type="text" placeholder="Full Name" name="fullName" className="input input-bordered" required />
+                            <input type="text" placeholder="Full Name" name="fullName" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" placeholder="email" className="input input-bordered border-thirdColor bg-primaryColor" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" placeholder="password" className="input input-bordered border-thirdColor bg-primaryColor" required />
                             <label className="label">
                                 <span className="label-text text-white">Date Of Birth</span>
                             </label>
-                            <input type="date" name="dob" className="input input-bordered" required />
+                            <input type="date" name="dob" className="input input-bordered border-thirdColor bg-primaryColor text-white" required />
                         </div>
                         <div className="form-control mt-6">
                             <button className="border-2 border-thirdColor text-white px-2 py-4 rounded-lg text-lg hover:bg-primaryColor duration-200">Sign Up</button>
