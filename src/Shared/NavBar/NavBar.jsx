@@ -9,7 +9,7 @@ const NavBar = () => {
         <li className="md:text-lg ml-2"><NavLink to=''>HOME</NavLink></li>
         <li className="md:text-lg ml-2"><NavLink to='/employee-register'>JOIN AS EMPLOYEE</NavLink></li>
         <li className="md:text-lg ml-2"><NavLink to='/admin-register'>JOIN AS HR/ADMIN</NavLink></li>
-        <li className="md:text-lg ml-2"><NavLink to='login'>LOGIN</NavLink></li>
+        <li className="md:text-lg ml-2"><NavLink to='/login'>LOGIN</NavLink></li>
     </>
 
     return (
