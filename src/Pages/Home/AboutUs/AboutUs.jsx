@@ -2,7 +2,7 @@
 const AboutUs = () => {
     return (
         <div>
-            <h1 className="text-4xl uppercase my-12 text-center border-b-2 border-primaryColor mx-auto pb-4 w-[200px] font-bold">About Us</h1>
+            <h1 className="text-4xl uppercase my-12 text-center border-b-2 border-primaryColor mx-auto pb-4 w-[200px] text-primaryColor font-bold">About Us</h1>
             <div className="md:flex gap-12">
                 <div className="w-6/12">
                     <img src="https://t4.ftcdn.net/jpg/02/33/02/17/360_F_233021773_y3xNl08YxoiDcmXIlKILXqmCm4oIpqMd.jpg" className="rounded-lg" alt="" />
