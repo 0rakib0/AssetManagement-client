@@ -2,11 +2,12 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase.config";
+import axios from "axios";
 
 
 const RegisterEmp = () => {
 
-    const {Register} = useAuth()
+    const { Register } = useAuth()
 
 
     const handleSubmit = (event) => {
@@ -18,15 +19,11 @@ const RegisterEmp = () => {
         const password = form.password.value
         const dob = form.dob.value
 
-        // const AdminInfo = {
-        //     full_name,
-        //     comapnyLogo,
-        //     companyName,
-        //     email,
-        //     memberpackage,
-        //     dob,
-        //     isAdmin: true
-        // }
+        const AdminInfo = {
+            email,
+            dob,
+            isAdmin: false
+        }
 
 
         // console.log(AdminInfo)
@@ -57,6 +54,10 @@ const RegisterEmp = () => {
                         });
                     })
                 console.log(user)
+                axios.post('http://localhost:5000/adddAdmin', AdminInfo)
+                    .then(res => {
+                        console.log(res.data)
+                    })
             })
             .catch(error => {
                 Swal.fire({

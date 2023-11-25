@@ -2,6 +2,7 @@ import { updateProfile } from "firebase/auth";
 import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.config";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const RegisterAdmin = () => {
 
@@ -19,8 +20,6 @@ const RegisterAdmin = () => {
         const memberpackage = form.package.value
 
         const AdminInfo = {
-            full_name,
-            comapnyLogo,
             companyName,
             email,
             memberpackage,
@@ -54,6 +53,11 @@ const RegisterAdmin = () => {
                         });
                     })
                 console.log(user)
+                axios.post('http://localhost:5000/adddAdmin', AdminInfo)
+                .then(res => {
+                    console.log(res.data)
+                })
+                
             })
             .catch(error => {
                 Swal.fire({
