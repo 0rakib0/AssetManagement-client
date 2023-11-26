@@ -12,6 +12,7 @@ const Login = () => {
         const password = form.password.value;
         Login(email, password)
         .then(result =>{
+            console.log(result.user)
             Swal.fire({
                 position: "top-end",
                 icon: "success",

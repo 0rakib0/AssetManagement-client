@@ -7,6 +7,11 @@ import RegisterAdmin from "../Pages/RegisterAdmin/RegisterAdmin";
 import RegisterEmp from "../Pages/RegisterEmp/RegisterEmp";
 import Login from "../Pages/Login/Login";
 import Dashbord from "../Roots/Dashbord";
+import Addasset from "../Pages/Dashbord/AddAsset/Addasset";
+import AssetList from "../Pages/Dashbord/AssetList/AssetList";
+import AddEmployee from "../Pages/Dashbord/addEmployee/AddEmployee";
+import MyEmployees from "../Pages/Dashbord/MyEmployees/MyEmployees";
+import MyTeam from "../Pages/Dashbord/MyTeam/MyTeam";
 
 
   const router = createBrowserRouter([
@@ -34,7 +39,29 @@ import Dashbord from "../Roots/Dashbord";
     },
     {
       path:'/dashbord',
-      element:<Dashbord></Dashbord>
+      element:<Dashbord></Dashbord>,
+      children:[
+        {
+          path:'add-asset',
+          element: <Addasset></Addasset>
+        },
+        {
+          path:'asset-list',
+          element: <AssetList></AssetList>
+        },
+        {
+          path:'add-employee',
+          element: <AddEmployee></AddEmployee>
+        },
+        {
+          path:'my-employee',
+          element:<MyEmployees></MyEmployees>
+        },
+        {
+          path:'my-team',
+          element: <MyTeam></MyTeam>
+        }
+      ]
     }
   ]);
 

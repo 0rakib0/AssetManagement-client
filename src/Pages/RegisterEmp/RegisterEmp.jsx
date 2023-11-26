@@ -19,10 +19,14 @@ const RegisterEmp = () => {
         const password = form.password.value
         const dob = form.dob.value
 
-        const AdminInfo = {
+        const EmpinInfo = {
+            profile,
+            full_name,
             email,
             dob,
-            isAdmin: false
+            isAdmin: false,
+            inTeam: false
+
         }
 
 
@@ -54,7 +58,7 @@ const RegisterEmp = () => {
                         });
                     })
                 console.log(user)
-                axios.post('http://localhost:5000/adddAdmin', AdminInfo)
+                axios.post('http://localhost:5000/adddAdmin', EmpinInfo)
                     .then(res => {
                         console.log(res.data)
                     })
