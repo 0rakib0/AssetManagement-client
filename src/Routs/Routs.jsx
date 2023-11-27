@@ -13,6 +13,8 @@ import AddEmployee from "../Pages/Dashbord/addEmployee/AddEmployee";
 import MyEmployees from "../Pages/Dashbord/MyEmployees/MyEmployees";
 import MyTeam from "../Pages/Dashbord/MyTeam/MyTeam";
 import RequestForAsset from "../Pages/Dashbord/RequestForAsset/RequestForAsset";
+import MyAsset from "../Pages/Dashbord/MyAsset/MyAsset";
+import AllRequest from "../Pages/Dashbord/AllRequest/AllRequest";
 
 
   const router = createBrowserRouter([
@@ -65,6 +67,14 @@ import RequestForAsset from "../Pages/Dashbord/RequestForAsset/RequestForAsset";
         {
           path:'request-for-asset',
           element: <RequestForAsset></RequestForAsset>
+        },
+        {
+          path:'my-asset',
+          element: <MyAsset></MyAsset>
+        },
+        {
+          path:'all-request',
+          element: <AllRequest></AllRequest>
         }
       ]
     }

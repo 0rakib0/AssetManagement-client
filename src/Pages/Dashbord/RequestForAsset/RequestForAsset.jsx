@@ -3,7 +3,6 @@ import { useQuery } from "react-query"
 import useAxiosSecure from "../../../Hooks/useAxiosSecure"
 import useAuth from "../../../Hooks/useAuth"
 import moment from "moment"
-import { FaEdit, FaRegTrashAlt } from "react-icons/fa"
 import axios from "axios"
 import Swal from "sweetalert2"
 
@@ -64,7 +63,8 @@ const RequestForAsset = () => {
             singleAsset,
             userEmail: user?.email,
             Notes,
-            isAprove: false
+            isAprove: false,
+            requetDate: new Date()
         }
         axios.post('http://localhost:5000/send-request', SendRequest)
             .then(res => {

@@ -1,10 +1,10 @@
-import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList } from "react-icons/fa";
+import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList, FaBezierCurve } from "react-icons/fa";
 import { NavLink, } from "react-router-dom";
 
 const SideBar = () => {
 
 
-    const isAdmin = false
+    const isAdmin = true
 
 
     return (
@@ -36,9 +36,9 @@ const SideBar = () => {
 
                         <li> <NavLink className='flex gap-3 items-center' to='asset-list'><FaClipboardList className="text-blue-600 text-2xl"></FaClipboardList>Asset List</NavLink></li>
 
-                        <li> <NavLink className='flex gap-3 items-center'><FaLuggageCart className="text-orange-600 text-2xl"></FaLuggageCart>Pending requests</NavLink></li>
+                        <li> <NavLink className='flex gap-3 items-center'><FaLuggageCart className="text-orange-600 text-2xl"></FaLuggageCart>All Request</NavLink></li>
 
-                        <li> <NavLink className='flex gap-3 items-center'><FaTh className="text-blue-800 text-2xl"></FaTh>Most requested items</NavLink></li>
+                        <li> <NavLink className='flex gap-3 items-center'><FaTh className="text-blue-800 text-2xl"></FaTh>Custom Request</NavLink></li>
 
                         <li> <NavLink className='flex gap-3 items-center'><FaCartArrowDown className="text-indigo-800 text-2xl"></FaCartArrowDown>Limited Stock items</NavLink></li>
                         <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
@@ -53,7 +53,9 @@ const SideBar = () => {
                             <li> <NavLink className='flex gap-3 items-center'><FaCookieBite className="text-orange-400 text-2xl"></FaCookieBite> Employee Dashbord</NavLink></li>
                             <li> <NavLink className='flex gap-3 items-center' to='my-team'><FaUsers className="text-orange-600 text-2xl"></FaUsers>My Team</NavLink></li>
 
-                            <li> <NavLink className='flex gap-3 items-center' to='request-for-asset'><FaTh className="text-blue-800 text-2xl"></FaTh>My Asset</NavLink></li>
+                            <li> <NavLink className='flex gap-3 items-center' to='my-asset'><FaTh className="text-blue-800 text-2xl"></FaTh>My Asset</NavLink></li>
+
+                            <li> <NavLink className='flex gap-3 items-center' to='request-for-asset'><FaBezierCurve className="text-pink-400 text-2xl"></FaBezierCurve>Request For Asset</NavLink></li>
 
                             <li> <NavLink className='flex gap-3 items-center'><FaCartArrowDown className="text-indigo-800 text-2xl"></FaCartArrowDown>My monthly requests</NavLink></li>
                             <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
