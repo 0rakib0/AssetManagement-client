@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 const MyTeam = () => {
 
@@ -25,6 +26,10 @@ const MyTeam = () => {
     }, [myTeam])
 
 
+    const date = new Date()
+   const  date_formate = moment(date).format('MM')
+   console.log(date_formate)
+
     const { data: Employees} = useQuery({
         queryKey: ['employee', adminEmail],
         queryFn: async () => {
@@ -33,7 +38,26 @@ const MyTeam = () => {
         }
     })
 
-    console.log(Employees)
+
+    const EmployeDOB = Employees?.map(em => em.employee.dob)
+    
+
+    console.log(EmployeDOB)
+
+    var dateObjects = EmployeDOB?.map(function(dateString) {
+        // Split the date string into day, month, and year components
+        var dateComponents = dateString.split('-');
+    
+        // Create a new Date object using the components
+        // Note: Months in JavaScript are 0-indexed, so we subtract 1 from the month component
+        // return new Date(dateComponents[2], dateComponents[1] - 1, dateComponents[0]);
+        return dateComponents[1];
+    });
+    
+    console.log(dateObjects)
+  
+    // console.log(moment(EmployeDOB).format('MM-DD-YYY'))
+    // console.log()
 
 
     return (
