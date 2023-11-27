@@ -36,7 +36,7 @@ const SideBar = () => {
 
                         <li> <NavLink className='flex gap-3 items-center' to='asset-list'><FaClipboardList className="text-blue-600 text-2xl"></FaClipboardList>Asset List</NavLink></li>
 
-                        <li> <NavLink className='flex gap-3 items-center'><FaLuggageCart className="text-orange-600 text-2xl"></FaLuggageCart>All Request</NavLink></li>
+                        <li> <NavLink className='flex gap-3 items-center' to='all-request'><FaLuggageCart className="text-orange-600 text-2xl"></FaLuggageCart>All Request</NavLink></li>
 
                         <li> <NavLink className='flex gap-3 items-center'><FaTh className="text-blue-800 text-2xl"></FaTh>Custom Request</NavLink></li>
 
