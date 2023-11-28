@@ -4,6 +4,9 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import moment from "moment";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const AssetList = () => {
 
     const axiosSecure = useAxiosSecure()
@@ -12,6 +15,7 @@ const AssetList = () => {
     const [type, setType] = useState('')
 
     const { user } = useAuth()
+    const [asc, desc] = useState(true)
 
     const { data: asset, refetch } = useQuery({
         queryKey: ['asset', user?.email],
@@ -32,14 +36,30 @@ const AssetList = () => {
         setSearch(search)
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         refetch()
-    },[type, refetch])
+    }, [type, refetch])
 
-    const handleTypeSelect = (event) =>{
+    const handleTypeSelect = (event) => {
         console.log(event.target.value)
         setType(event.target.value)
     }
+
+    const handleDelete = (id => {
+        axios.delete(`http://localhost:5000/delete-asset/${id}`)
+            .then(res => {
+                if (res.data.deletedCount) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Asset Successfully Delete!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                refetch()
+            })
+    })
 
     return (
         <div className="mt-4">
@@ -52,6 +72,12 @@ const AssetList = () => {
                         <button className="btn bg-primaryColor text-white hover:text-black join-item rounded-r-lg">Subscribe</button>
                     </div>
                 </form>
+
+                <div>
+                    <button onClick={() => desc(!asc)} className='bg-primaryColor p-2 text-white rounded-lg'>{asc ? 'High To Low' :
+                        'Low To High'
+                    }</button>
+                </div>
 
                 <div>
                     <select onChange={handleTypeSelect} name="asetType" className='border-2 border-primaryColor rounded-lg px-8 py-2'>
@@ -99,8 +125,8 @@ const AssetList = () => {
                                 <td>{asset.assetQuantity}</td>
                                 <td>{moment(asset.addedDate).format('DD-MM-YYY')}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs text-2xl text-orange-400"><FaEdit></FaEdit></button>
-                                    <button className="btn btn-ghost btn-xs text-2xl text-red-400"><FaRegTrashAlt></FaRegTrashAlt></button>
+                                    <Link to={`/updated-asset/${asset._id}`}><button className="btn btn-ghost btn-xs text-2xl text-orange-400"><FaEdit></FaEdit></button></Link>
+                                    <button onClick={() => handleDelete(asset._id)} className="btn btn-ghost btn-xs text-2xl text-red-400"><FaRegTrashAlt></FaRegTrashAlt></button>
                                 </th>
                             </tr>)
                         }

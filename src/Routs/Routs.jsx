@@ -17,6 +17,9 @@ import MyAsset from "../Pages/Dashbord/MyAsset/MyAsset";
 import AllRequest from "../Pages/Dashbord/AllRequest/AllRequest";
 import CustomRequest from "../Pages/Dashbord/CustomRequest/CustomRequest";
 import MyCustomRequest from "../Pages/Dashbord/MyCustomRequest/MyCustomRex";
+import AllCustomRequest from "../Pages/Dashbord/AllCustomRequest/AllCustomRequest";
+import UpdateAsset from "../Pages/Dashbord/UpdateAsset/UpdateAsset";
+import PrivatRouts from "./PrivatRouts";
 
 
   const router = createBrowserRouter([
@@ -44,7 +47,7 @@ import MyCustomRequest from "../Pages/Dashbord/MyCustomRequest/MyCustomRex";
     },
     {
       path:'/dashbord',
-      element:<Dashbord></Dashbord>,
+      element:<PrivatRouts><Dashbord></Dashbord></PrivatRouts>,
       children:[
         {
           path:'add-asset',
@@ -85,6 +88,14 @@ import MyCustomRequest from "../Pages/Dashbord/MyCustomRequest/MyCustomRex";
         {
           path:'my-custom-request',
           element: <MyCustomRequest></MyCustomRequest>
+        },
+        {
+          path:'all-custom-request',
+          element:<AllCustomRequest></AllCustomRequest>
+        },
+        {
+          path:'updated-asset/:id',
+          element: <UpdateAsset></UpdateAsset>
         }
       ]
     }

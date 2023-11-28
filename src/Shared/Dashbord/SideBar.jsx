@@ -4,7 +4,7 @@ import { NavLink, } from "react-router-dom";
 const SideBar = () => {
 
 
-    const isAdmin = false
+    const isAdmin = true
 
 
     return (
@@ -38,7 +38,7 @@ const SideBar = () => {
 
                         <li> <NavLink className='flex gap-3 items-center' to='all-request'><FaLuggageCart className="text-orange-600 text-2xl"></FaLuggageCart>All Request</NavLink></li>
 
-                        <li> <NavLink className='flex gap-3 items-center'><FaTh className="text-blue-800 text-2xl"></FaTh>Custom Request</NavLink></li>
+                        <li> <NavLink className='flex gap-3 items-center' to='all-custom-request'><FaTh className="text-blue-800 text-2xl"></FaTh>All Custom Request</NavLink></li>
 
                         <li> <NavLink className='flex gap-3 items-center'><FaCartArrowDown className="text-indigo-800 text-2xl"></FaCartArrowDown>Limited Stock items</NavLink></li>
                         <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
