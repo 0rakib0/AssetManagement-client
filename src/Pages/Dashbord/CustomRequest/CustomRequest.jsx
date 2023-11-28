@@ -1,11 +1,49 @@
+import axios from "axios";
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const CustomRequest = () => {
 
+    const { user } = useAuth()
+
     const handleSubmit = (event) => {
         event.preventDefault()
         const form = event.target
-        console.log(form)
+        const assetName = form.name.value
+        const assetPrice = form.price.value
+        const assetype = form.assetype.value
+        const assetImage = form.image.value
+        const whyNeed = form.need.value
+        const info = form.info.value
+        console.log(assetName, assetPrice, assetype, assetImage, whyNeed, info)
+
+        const customRequest = {
+            assetName,
+            assetPrice,
+            assetype,
+            assetImage,
+            whyNeed,
+            info,
+            userEmail: user?.email,
+            requestDate: new (Date)
+        }
+
+        axios.post('http://localhost:5000/custom-Request', customRequest)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Request successfully send. pleae waite for responce!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    form.reset()
+                }
+            })
+
+
 
     }
 
@@ -28,7 +66,7 @@ const CustomRequest = () => {
                                 <label className="label">
                                     <span className="label-text">Asset Price</span>
                                 </label>
-                                <input type="text" placeholder="Asset Name" name="name" className="input input-bordered border-thirdColor" required />
+                                <input type="number" placeholder="Asset Price" name="price" className="input input-bordered border-thirdColor" required />
 
                             </div>
                             <div className="form-control">
@@ -44,20 +82,20 @@ const CustomRequest = () => {
                                 <label className="label">
                                     <span className="label-text">Asset Image</span>
                                 </label>
-                                <input type="number" placeholder="Asset Quantity" name="quatity" className="input input-bordered border-thirdColor" required />
+                                <input type="text" placeholder="Asset ImageURL" name="image" className="input input-bordered border-thirdColor" required />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Why Need</span>
                                 </label>
-                                <input type="text" placeholder="Asset Image URL" name="image" className="input input-bordered border-thirdColor" required />
+                                <input type="text" placeholder="Why You Need this asset" name="need" className="input input-bordered border-thirdColor" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Aditional Information</span>
                                 </label>
-                                <input type="text" placeholder="Asset Image URL" name="image" className="input input-bordered border-thirdColor" required />
+                                <input type="text" placeholder="Aditional Info" name="info" className="input input-bordered border-thirdColor" required />
                             </div>
 
                             <div className="form-control mt-6">

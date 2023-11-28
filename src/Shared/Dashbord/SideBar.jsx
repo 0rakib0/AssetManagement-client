@@ -58,6 +58,10 @@ const SideBar = () => {
                             <li> <NavLink className='flex gap-3 items-center' to='request-for-asset'><FaBezierCurve className="text-pink-400 text-2xl"></FaBezierCurve>Request For Asset</NavLink></li>
 
                             <li> <NavLink className='flex gap-3 items-center' to='custom-request'><FaCartArrowDown className="text-indigo-800 text-2xl"></FaCartArrowDown>Custom requests</NavLink></li>
+
+
+                            <li> <NavLink className='flex gap-3 items-center' to='my-custom-request'><FaCartArrowDown className="text-indigo-800 text-2xl"></FaCartArrowDown>My Custom requests</NavLink></li>
+
                             <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
 
                             <li> <NavLink className='flex gap-3 items-center'><FaSignOutAlt className="text-sky-300 text-2xl"></FaSignOutAlt>Logout</NavLink></li>

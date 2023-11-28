@@ -16,6 +16,7 @@ import RequestForAsset from "../Pages/Dashbord/RequestForAsset/RequestForAsset";
 import MyAsset from "../Pages/Dashbord/MyAsset/MyAsset";
 import AllRequest from "../Pages/Dashbord/AllRequest/AllRequest";
 import CustomRequest from "../Pages/Dashbord/CustomRequest/CustomRequest";
+import MyCustomRequest from "../Pages/Dashbord/MyCustomRequest/MyCustomRex";
 
 
   const router = createBrowserRouter([
@@ -80,6 +81,10 @@ import CustomRequest from "../Pages/Dashbord/CustomRequest/CustomRequest";
         {
           path:'custom-request',
           element: <CustomRequest></CustomRequest>
+        },
+        {
+          path:'my-custom-request',
+          element: <MyCustomRequest></MyCustomRequest>
         }
       ]
     }
