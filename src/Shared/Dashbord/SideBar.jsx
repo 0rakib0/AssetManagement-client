@@ -4,9 +4,12 @@ import useAdmin from "../../Hooks/useAdmin";
 
 const SideBar = () => {
 
-    const adminStatus = useAdmin()
-    console.log(adminStatus)
-    const isAdmin = true
+    const [isAdmin, adminLoading] = useAdmin()
+    if(adminLoading){
+        return 'Loadin......'
+    }
+    console.log(isAdmin)
+    const isAdmin2 = isAdmin
 
 
     return (
@@ -27,7 +30,7 @@ const SideBar = () => {
                 <h4 className="text-xl text-center py-2 border-b-2 border-thirdColor">General</h4>
                 <ul className="space-y-8 pl-6 m-4 text-xl">
 
-                    {isAdmin ? <>
+                    {isAdmin2 ? <>
                         <li> <NavLink className='flex gap-3 items-center'><FaClipboardCheck className="text-orange-400 text-2xl"></FaClipboardCheck> Admin Home</NavLink></li>
 
                         <li> <NavLink className='flex gap-3 items-center' to="my-employee"><FaUsers className="text-green-400 text-2xl"></FaUsers>My Employee</NavLink></li>

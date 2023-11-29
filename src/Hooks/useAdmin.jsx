@@ -9,7 +9,7 @@ const useAdmin = () => {
     const { user , loading} = useAuth()
 
 
-    const { data: isAdmin = false, isPending: adminLoading } = useQuery({
+    const { data: isAdmin , isPending: adminLoading } = useQuery({
         queryKey: [user?.email, 'isAdmin'],
         enabled: !loading,
         queryFn: async () => {

@@ -20,6 +20,7 @@ import MyCustomRequest from "../Pages/Dashbord/MyCustomRequest/MyCustomRex";
 import AllCustomRequest from "../Pages/Dashbord/AllCustomRequest/AllCustomRequest";
 import UpdateAsset from "../Pages/Dashbord/UpdateAsset/UpdateAsset";
 import PrivatRouts from "./PrivatRouts";
+import AdminRouts from "./AdminRouts";
 
 
   const router = createBrowserRouter([
@@ -51,31 +52,31 @@ import PrivatRouts from "./PrivatRouts";
       children:[
         {
           path:'add-asset',
-          element: <Addasset></Addasset>
+          element: <AdminRouts><Addasset></Addasset></AdminRouts>
         },
         {
           path:'asset-list',
-          element: <AssetList></AssetList>
+          element: <AdminRouts><AssetList></AssetList></AdminRouts>
         },
         {
           path:'add-employee',
-          element: <AddEmployee></AddEmployee>
+          element: <AdminRouts><AddEmployee></AddEmployee></AdminRouts>
         },
         {
           path:'my-employee',
-          element:<MyEmployees></MyEmployees>
+          element: <AdminRouts><MyEmployees></MyEmployees></AdminRouts>
         },
         {
           path:'my-team',
-          element: <MyTeam></MyTeam>
+          element: <PrivatRouts><MyTeam></MyTeam></PrivatRouts>
         },
         {
           path:'request-for-asset',
-          element: <RequestForAsset></RequestForAsset>
+          element: <PrivatRouts><RequestForAsset></RequestForAsset></PrivatRouts>
         },
         {
           path:'my-asset',
-          element: <MyAsset></MyAsset>
+          element: <PrivatRouts><MyAsset></MyAsset></PrivatRouts>
         },
         {
           path:'all-request',
@@ -83,11 +84,11 @@ import PrivatRouts from "./PrivatRouts";
         },
         {
           path:'custom-request',
-          element: <CustomRequest></CustomRequest>
+          element: <PrivatRouts><CustomRequest></CustomRequest></PrivatRouts>
         },
         {
           path:'my-custom-request',
-          element: <MyCustomRequest></MyCustomRequest>
+          element: <PrivatRouts><MyCustomRequest></MyCustomRequest></PrivatRouts>
         },
         {
           path:'all-custom-request',
@@ -95,7 +96,7 @@ import PrivatRouts from "./PrivatRouts";
         },
         {
           path:'updated-asset/:id',
-          element: <UpdateAsset></UpdateAsset>
+          element: <PrivatRouts><UpdateAsset></UpdateAsset></PrivatRouts>
         }
       ]
     }
