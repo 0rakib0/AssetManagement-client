@@ -4,12 +4,17 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure"
 import moment from "moment";
 import useAuth from "../../../Hooks/useAuth";
 import { PieChart } from '@mui/x-charts/PieChart';
+import { useEffect, useState } from "react";
 
 const HomeDashbord = () => {
     const [isAdmin, adminLoading] = useAdmin()
     if (adminLoading) {
         return 'Loadin......'
     }
+
+    const [returnabl, setReturnable] = useState()
+    const [nonreturnabl, setNonReturnable] = useState()
+
 
     const { user } = useAuth()
     const secureAxios = useAxiosSecure()
@@ -50,13 +55,36 @@ const HomeDashbord = () => {
     })
 
     const { data: Percentage } = useQuery({
-        queryKey: ['percentage', user?.email],
+        queryKey: 'percentage',
         queryFn: async () => {
-            const res = await secureAxios.get(`/parcentage/${user?.email}`)
+            const res = await secureAxios.get(`/parcentage`)
             return (res.data)
         }
     })
 
+
+    const returnable = Percentage?.request1?.length
+    const nonreturnable = Percentage?.request2?.length
+
+    const TotalCount = returnable + nonreturnable
+
+    const returnablePercentage =  ((returnable / TotalCount) * 100);
+    const NonreturnablePercentage = (nonreturnable / TotalCount) * 100;
+
+    
+
+    useEffect(() => {
+        if (returnablePercentage) {
+            setReturnable(returnablePercentage)
+            setNonReturnable(NonreturnablePercentage)
+
+            
+        }
+    }, [returnablePercentage])
+
+
+    console.log(returnabl)
+    console.log(nonreturnabl)
 
     if (isLoading) {
         <>
@@ -85,18 +113,18 @@ const HomeDashbord = () => {
                     </div>
                     <div className="flex justify-center">
                         <div>
-                            <PieChart
+                            {returnabl &&<PieChart
                                 series={[
                                     {
                                         data: [
-                                            { id: 0, value: 10, label: 'series A' },
-                                            { id: 2, value: 20, label: 'series C' },
+                                            { id: 0, value: {returnable}, label: 'Returnable' },
+                                            { id: 2, value: {nonreturnable}, label: 'Non Returnable' },
                                         ],
                                     },
                                 ]}
                                 width={400}
                                 height={200}
-                            />
+                            />}
                         </div>
                     </div>
                     {/* Pending Request */}
@@ -162,7 +190,7 @@ const HomeDashbord = () => {
                             </thead>
                             <tbody className="text-center">
                                 {
-                                    TopRequest?.map((request, index) => <tr key={request?._id?._id}>
+                                    TopRequest?.map((request, index) => <tr key={index}>
                                         <th>{index + 1}</th>
                                         <td>
                                             <div className="flex items-center gap-3">
@@ -209,7 +237,7 @@ const HomeDashbord = () => {
                             </thead>
                             <tbody>
                                 {
-                                    LimitStock?.map((asset, index) => <tr key={asset.id}>
+                                    LimitStock?.map((asset, index) => <tr key={asset._id}>
                                         <th>
                                             {index + 1}
                                         </th>
@@ -253,7 +281,7 @@ const HomeDashbord = () => {
                             </thead>
                             <tbody>
                                 {
-                                    OutOfStock?.map((asset, index) => <tr key={asset.id}>
+                                    OutOfStock?.map((asset, index) => <tr key={asset._id}>
                                         <th>
                                             {index + 1}
                                         </th>
