@@ -21,6 +21,7 @@ import AllCustomRequest from "../Pages/Dashbord/AllCustomRequest/AllCustomReques
 import UpdateAsset from "../Pages/Dashbord/UpdateAsset/UpdateAsset";
 import PrivatRouts from "./PrivatRouts";
 import AdminRouts from "./AdminRouts";
+import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
 
 
   const router = createBrowserRouter([
@@ -53,6 +54,10 @@ import AdminRouts from "./AdminRouts";
         {
           path:'add-asset',
           element: <AdminRouts><Addasset></Addasset></AdminRouts>
+        },
+        {
+          path:'/dashbord',
+          element: <HomeDashbord></HomeDashbord>
         },
         {
           path:'asset-list',

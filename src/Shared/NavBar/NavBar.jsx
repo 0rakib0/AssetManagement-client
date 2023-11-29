@@ -1,13 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 
 const NavBar = () => {
 
+    const naviget = useNavigate()
     const { user, Logout } = useAuth()
 
     const handleLogout = () => {
         Logout()
+        naviget('/')
     }
 
     const NavLinks = <>
@@ -48,7 +50,7 @@ const NavBar = () => {
                     <a className="btn">{user?.email}</a>
                 </div>
                 <div className="avatar">
-                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={user?.photoURL} />
                     </div>
                 </div>

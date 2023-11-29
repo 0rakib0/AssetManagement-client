@@ -1,28 +1,29 @@
 import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList, FaBezierCurve } from "react-icons/fa";
 import { NavLink, } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
+import useAuth from "../../Hooks/useAuth";
 
 const SideBar = () => {
+    const {user} = useAuth()
 
     const [isAdmin, adminLoading] = useAdmin()
     if(adminLoading){
         return 'Loadin......'
     }
-    console.log(isAdmin)
     const isAdmin2 = isAdmin
 
 
     return (
         <div className="h-full z-10">
-            <div className="bg-SecondariColor flex items-center py-6 gap-4">
+            <div className="bg-SecondariColor flex items-center py-6 lg:gap-4">
                 <div className="avatar pl-2">
                     <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src="https://img.freepik.com/free-photo/half-profile-image-handsome-young-caucasian-man-with-good-skin-brown-eyes-black-stylish-hair-stubble-posing-isolated-against-blank-wall-looking-front-him-smiling_343059-4560.jpg" />
+                        <img src={user.photoURL} />
                     </div>
                 </div>
                 <div className="px-4 mt-4 text-white">
-                    <h3 className="text-lg font-bold">Rakibul Hasan</h3>
-                    <p className="text-center">Admin</p>
+                    <h3 className="text-lg font-bold">{user?.displayName}</h3>
+                    <p className="text-center">{isAdmin2 ? "Admin":"Employee"}</p>
                 </div>
 
             </div>

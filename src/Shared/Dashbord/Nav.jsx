@@ -1,15 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 
 const Nav = () => {
-    
+    const naviget = useNavigate()
     const {Logout} = useAuth()
 
     const handleLogout = () =>{
         Logout()
+        naviget('/')
+    
     }
     return (
-        <div className="bg-primaryColor text-white absolute top-0 left-60 w-[81%] py-6">
+        <div className="bg-primaryColor text-white absolute top-0 md:left-44 lg:left-60 w-[81%] py-6">
             <div className="flex justify-between items-center">
                 <div>
                     <img src="https://themewagon.github.io/pluto/images/logo/logo.png" className="w-28 ml-8" alt="" />
