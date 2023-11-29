@@ -22,6 +22,7 @@ import UpdateAsset from "../Pages/Dashbord/UpdateAsset/UpdateAsset";
 import PrivatRouts from "./PrivatRouts";
 import AdminRouts from "./AdminRouts";
 import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
+import Payment from "../Pages/Dashbord/Payment/Payment";
 
 
   const router = createBrowserRouter([
@@ -103,6 +104,10 @@ import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
           path:'updated-asset/:id',
           element: <PrivatRouts><UpdateAsset></UpdateAsset></PrivatRouts>
         },
+        {
+          path:'payment', 
+          element: <Payment></Payment>
+        }
       ]
     }
   ]);
