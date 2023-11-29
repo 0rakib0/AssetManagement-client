@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import DownloadPDF from "./DownloadPDF";
 
 
 const MyAsset = () => {
@@ -89,6 +90,10 @@ const MyAsset = () => {
             })
     }
 
+    const handlePDF = (AssetID) => {
+        console.log(AssetID)
+        return <DownloadPDF assetID={AssetID}></DownloadPDF>
+    }
 
     return (
         <div className="mt-6">
@@ -161,18 +166,23 @@ const MyAsset = () => {
                                     }
                                 </td>
                                 <th>
-                                    {asset.retured ? <button disabled className="bg-thirdColor p-2 text-white rounded-lg">Returned</button> : <>{asset.isAprove ? <button className="bg-primaryColor p-2 text-white rounded-lg" >Print Details</button> :
-                                        <button onClick={() => handleCancel(asset._id)} className="bg-red-400 p-2 text-white rounded-lg" >Cansel</button>
-                                    }
-                                        {asset.isAprove && asset.singleAsset.assetType && <button onClick={() => handleReturn(asset._id, asset.singleAsset._id)} className="bg-primaryColor text-white ml-2 p-2 rounded-lg">Return</button>
+                                    {asset.retured ? <button disabled className="bg-thirdColor p-2 text-white rounded-lg">Returned</button> :
 
-                                        }</>}
+                                        <>{asset.isAprove ? <button className="bg-primaryColor p-2 text-white rounded-lg" ><DownloadPDF asset={asset.singleAsset}></DownloadPDF></button>
+
+                                            :
+                                            <button onClick={() => handleCancel(asset._id)} className="bg-red-400 p-2 text-white rounded-lg" >Cansel</button>
+                                        }
+                                            {asset.isAprove && asset.singleAsset.assetType === 'returnable' && <button onClick={() => handleReturn(asset._id, asset.singleAsset._id)} className="bg-primaryColor text-white ml-2 p-2 rounded-lg">Return</button>
+
+                                            }</>}
                                 </th>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+
         </div>
     );
 };

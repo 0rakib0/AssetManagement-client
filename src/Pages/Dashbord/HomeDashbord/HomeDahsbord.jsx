@@ -3,7 +3,7 @@ import useAdmin from "../../../Hooks/useAdmin"
 import useAxiosSecure from "../../../Hooks/useAxiosSecure"
 import moment from "moment";
 import useAuth from "../../../Hooks/useAuth";
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import { useEffect, useState } from "react";
 
 const HomeDashbord = () => {
@@ -68,17 +68,17 @@ const HomeDashbord = () => {
 
     const TotalCount = returnable + nonreturnable
 
-    const returnablePercentage =  ((returnable / TotalCount) * 100);
+    const returnablePercentage = ((returnable / TotalCount) * 100);
     const NonreturnablePercentage = (nonreturnable / TotalCount) * 100;
 
-    
+
 
     useEffect(() => {
         if (returnablePercentage) {
             setReturnable(returnablePercentage)
             setNonReturnable(NonreturnablePercentage)
 
-            
+
         }
     }, [returnablePercentage])
 
@@ -97,7 +97,42 @@ const HomeDashbord = () => {
 
 
 
-    // Employee Dashbord Section
+    const data = [
+        { value: returnabl, label: 'A' },
+        { value: nonreturnabl, label: 'B' },
+    ];
+
+    const size = {
+        width: 400,
+        height: 200,
+    };
+
+
+    // Employee Dashbord Section---------------------------------
+
+    const { data: customrequest } = useQuery({
+        queryKey: ['custom-req', user?.email],
+        queryFn: async () => {
+            const res = await secureAxios.get(`/custom-request/${user?.email}`)
+            return res.data
+        }
+    })
+
+    const { data: MyPendingRequest } = useQuery({
+        queryKey: ['reqquest', user?.email],
+        queryFn: async () => {
+            const res = await secureAxios.get(`/my-pending-request/${user?.email}`)
+            return res.data
+        }
+    })
+
+    const { data: totalAsset } = useQuery({
+        queryKey: ['reqquest', user?.email],
+        queryFn: async () => {
+            const res = await secureAxios.get(`/all-request-emp/${user?.email}`)
+            return res.data
+        }
+    })
 
 
 
@@ -106,26 +141,50 @@ const HomeDashbord = () => {
         <div className="mt-12 pl-8">
             {isAdmin2 ?
                 <div className="m-6">
-                    <div>
-                        <div>
-
+                    <div className="grid md:grid-cols-4 gap-4 text-center text-white mb-4">
+                        <div className="bg-thirdColor py-4 rounded-lg">
+                            <p className="text-5xl font-bold">{PendingRequest?.length}</p>
+                            <h4 className="text-xl font-semibold">Rending Request</h4>
+                        </div>
+                        <div className="bg-thirdColor py-4 rounded-lg">
+                            <p className="text-5xl font-bold">{TopRequest?.length}</p>
+                            <h4 className="text-xl font-semibold">Top Ruquested</h4>
+                        </div>
+                        <div className="bg-thirdColor py-4 rounded-lg">
+                            <p className="text-5xl font-bold">{LimitStock?.length}</p>
+                            <h4 className="text-xl font-semibold">Limited Stock</h4>
+                        </div>
+                        <div className="bg-thirdColor py-4 rounded-lg">
+                            <p className="text-5xl font-bold">{OutOfStock?.length}</p>
+                            <h4 className="text-xl font-semibold">Stock Out</h4>
                         </div>
                     </div>
                     <div className="flex justify-center">
                         <div>
-                            {returnabl &&<PieChart
+                            <PieChart
                                 series={[
                                     {
-                                        data: [
-                                            { id: 0, value: {returnable}, label: 'Returnable' },
-                                            { id: 2, value: {nonreturnable}, label: 'Non Returnable' },
-                                        ],
+                                        arcLabel: (item) => `${item.label} (${item.value})`,
+                                        arcLabelMinAngle: 45,
+                                        data,
                                     },
                                 ]}
-                                width={400}
-                                height={200}
-                            />}
+                                sx={{
+                                    [`& .${pieArcLabelClasses.root}`]: {
+                                        fill: 'white',
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                                {...size}
+                            />
+                            <div className="flex  justify-evenly mt-4">
+                                <div className="bg-[#02b2af] p-2 text-white">Returnable</div>
+                                <div className="bg-[#2E96FF] p-2 text-white">Non Returnable</div>
+                            </div>
                         </div>
+                    </div>
+                    <div className="flex justify-center">
+
                     </div>
                     {/* Pending Request */}
                     <div className="overflow-x-auto mt-8  mx-4">
@@ -312,7 +371,102 @@ const HomeDashbord = () => {
                 :
 
                 <div>
-                    <h1>This is Employee Dashbord</h1>
+                    <div>
+                        <div className="grid md:grid-cols-3 gap-4 text-center text-white mb-4">
+                            <div className="bg-thirdColor py-4 rounded-lg">
+                                <p className="text-5xl font-bold">{customrequest?.length}</p>
+                                <h4 className="text-xl font-semibold">Custom Request</h4>
+                            </div>
+                            <div className="bg-thirdColor py-4 rounded-lg">
+                                <p className="text-5xl font-bold">{MyPendingRequest?.length}</p>
+                                <h4 className="text-xl font-semibold">My Pending Ruquested</h4>
+                            </div>
+                            <div className="bg-thirdColor py-4 rounded-lg">
+                                <p className="text-5xl font-bold">{totalAsset?.length}</p>
+                                <h4 className="text-xl font-semibold">Total Asset</h4>
+                            </div>
+                        </div>
+                        <div className="overflow-x-auto mt-8  mx-4">
+                            <h1 className="text-xl text-primaryColor ml-4 mb-4">Custom Request</h1>
+                            <table className="table table-xs table-pin-rows table-pin-cols">
+                                <thead>
+                                    <tr className="text-center">
+                                        <th>#</th>
+                                        <td>Asset Name</td>
+                                        <td>Asset Type</td>
+                                        <td>Email of requester</td>
+                                        <td>Price</td>
+                                        <td>Additional note</td>
+                                        <td>status</td>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-center">
+                                    {
+                                        customrequest?.map((request, index) => <tr key={request._id}>
+                                            <th>{index + 1}</th>
+                                            <td>{request.assetName}</td>
+                                            <td>{request.assetype}</td>
+                                            <td>{request.userEmail}</td>
+                                            <td>${request.assetPrice}</td>
+                                            <td>{request.info}</td>
+                                            {request.isAprove ? <>
+                                                <th><button disabled className="bg-green-300 rounded-md text-white p-1">Aproved</button></th>
+
+                                            </> :
+                                                <>
+                                                    <th><button className="bg-ged-600 rounded-md text-white p-1">Pending</button></th>
+
+                                                </>
+                                            }
+                                        </tr>)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        {/* My Pending Request */}
+                        <div className="overflow-x-auto mt-8  mx-4">
+                            <h1 className="text-xl text-primaryColor ml-4 mb-4">My Pending Request</h1>
+                            <table className="table table-xs table-pin-rows table-pin-cols">
+                                <thead>
+                                    <tr className="text-center">
+                                        <th>#</th>
+                                        <td>Asset Name</td>
+                                        <td>Asset Type</td>
+                                        <td>Email of requester</td>
+                                        <td>Request Date</td>
+                                        <td>Status</td>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-center">
+                                    {
+                                        MyPendingRequest?.map((request, index) => <tr key={request._id}>
+                                            <th>{index + 1}</th>
+                                            <td>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={request.singleAsset.image} alt="Avatar Tailwind CSS Component" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold">{request.singleAsset.assetName}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{request.singleAsset.assetType}</td>
+                                            <td>{request.userEmail}</td>
+                                            <td>{moment(request.requetDate).format('DD-MM-YYY')}</td>
+                                            {request.isAprove ? <td className="bg-green-300 rounded-lg">Aproved</td> :
+                                                <td className="bg-yellow-300 rounded-lg">Pending</td>
+                                            }
+
+
+                                        </tr>)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>}
         </div>
     )

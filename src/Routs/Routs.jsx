@@ -102,7 +102,7 @@ import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
         {
           path:'updated-asset/:id',
           element: <PrivatRouts><UpdateAsset></UpdateAsset></PrivatRouts>
-        }
+        },
       ]
     }
   ]);
