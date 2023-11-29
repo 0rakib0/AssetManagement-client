@@ -1,0 +1,46 @@
+[
+    {
+        "_id": {
+            "_id": "6563819feb0605a771a0ae54",
+            "assetName": "Mobile",
+            "assetType": "nonreturnable",
+            "assetQuantity": 11,
+            "image": "https://www.gizmochina.com/wp-content/uploads/2019/09/Apple-iPhone-11-1.jpg",
+            "email": "foysal@gmail.com",
+            "addedDate": "2023-11-26T17:34:23.083Z"
+        },
+        "count": 1
+    },
+    {
+        "_id": {
+            "_id": "6563526792ee9c7f85bbfbe6",
+            "assetName": "I phone 11",
+            "assetType": "nonreturnable",
+            "assetQuantity": 9,
+            "image": "https://www.gizmochina.com/wp-content/uploads/2019/09/Apple-iPhone-11-1.jpg",
+            "email": "rakib0@gmail.com"
+        },
+        "count": 1
+    },
+    {
+        "_id": {
+            "_id": "6563526792ee9c7f85bbfbe6",
+            "assetName": "I phone 11",
+            "assetType": "nonreturnable",
+            "assetQuantity": 10,
+            "image": "https://www.gizmochina.com/wp-content/uploads/2019/09/Apple-iPhone-11-1.jpg",
+            "email": "rakib0@gmail.com"
+        },
+        "count": 1
+    },
+    {
+        "_id": {
+            "_id": "6562f5bc028df26d59b3318e",
+            "assetName": "Mobile",
+            "assetType": "returnable",
+            "assetQuantity": 10,
+            "image": "https://asia-exstatic-vivofs.vivo.com/PSee2l50xoirPK7y/1677571104137/afee365e27ec71ce13a2b6664ecde107.png"
+        },
+        "count": 1
+    }
+]
