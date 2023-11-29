@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
 import Package from "../Package/Package";
-import { authContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 
 const Home = () => {

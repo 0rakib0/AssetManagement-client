@@ -1,8 +1,11 @@
 import Swal from "sweetalert2"
 import useAuth from "../../Hooks/useAuth"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
     const { Login } = useAuth()
+
+    const naviget = useNavigate()
 
 
     const handleSubmit = event =>{
@@ -20,6 +23,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            naviget('/dashbord')
         })
         .catch(error =>{
             Swal.fire({

@@ -1,15 +1,26 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const NavBar = () => {
 
+    const { user, Logout } = useAuth()
 
+    const handleLogout = () => {
+        Logout()
+    }
 
     const NavLinks = <>
         <li className="md:text-lg ml-2"><NavLink to=''>HOME</NavLink></li>
-        <li className="md:text-lg ml-2"><NavLink to='/employee-register'>JOIN AS EMPLOYEE</NavLink></li>
-        <li className="md:text-lg ml-2"><NavLink to='/admin-register'>JOIN AS HR/ADMIN</NavLink></li>
-        <li className="md:text-lg ml-2"><NavLink to='/login'>LOGIN</NavLink></li>
+        {user ? <>
+            <li className="md:text-lg ml-2"><NavLink to='/dashbord'>Dashbord</NavLink></li>
+            <li className="md:text-lg ml-2" onClick={handleLogout}><NavLink to='/login'>LOGOUT</NavLink></li>
+        </>
+            :
+            <><li className="md:text-lg ml-2"><NavLink to='/employee-register'>JOIN AS EMPLOYEE</NavLink></li>
+                <li className="md:text-lg ml-2"><NavLink to='/admin-register'>JOIN AS HR/ADMIN</NavLink></li>
+                <li className="md:text-lg ml-2"><NavLink to='/login'>LOGIN</NavLink></li></>
+        }
     </>
 
     return (
@@ -32,9 +43,16 @@ const NavBar = () => {
                     {NavLinks}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+            {user && <>
+                <div className="navbar-end mr-6">
+                    <a className="btn">{user?.email}</a>
+                </div>
+                <div className="avatar">
+                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={user?.photoURL} />
+                    </div>
+                </div>
+            </>}
         </div>
     );
 };

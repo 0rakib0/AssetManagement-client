@@ -1,10 +1,11 @@
-import useAxious from "./AxiousSecure";
-import { useQuery } from "@tanstack/react-query";
+
+import { useQuery } from "react-query";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useAdmin = () => {
-    const secureAxios = useAxious()
+    const secureAxios = useAxiosSecure()
     const { user , loading} = useAuth()
 
 
@@ -15,6 +16,7 @@ const useAdmin = () => {
             if (user) {
                 const res = await secureAxios.get(`/user/admin/${user?.email}`)
                 return res.data
+                
             }
         }
     })

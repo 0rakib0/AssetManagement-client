@@ -3,10 +3,12 @@ import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.config";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterAdmin = () => {
 
-    const { Register } = useAuth()
+    const { Register, Logout } = useAuth()
+    const naviget = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -57,6 +59,9 @@ const RegisterAdmin = () => {
                 .then(res => {
                     console.log(res.data)
                 })
+
+                Logout()
+                naviget('/login')
                 
             })
             .catch(error => {

@@ -1,9 +1,11 @@
 import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList, FaBezierCurve } from "react-icons/fa";
 import { NavLink, } from "react-router-dom";
+import useAdmin from "../../Hooks/useAdmin";
 
 const SideBar = () => {
 
-
+    const adminStatus = useAdmin()
+    console.log(adminStatus)
     const isAdmin = true
 
 
