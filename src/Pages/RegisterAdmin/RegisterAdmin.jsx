@@ -58,7 +58,7 @@ const RegisterAdmin = () => {
                         });
                     })
                 console.log(user)
-                axios.post('http://localhost:5000/adddAdmin', AdminInfo)
+                axios.post('https://assetmanagement-xi.vercel.app/adddAdmin', AdminInfo)
                 .then(res => {
                     console.log(res.data)
                 })

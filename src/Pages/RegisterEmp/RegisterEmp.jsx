@@ -59,7 +59,7 @@ const RegisterEmp = () => {
                         });
                     })
                 console.log(user)
-                axios.post('http://localhost:5000/adddAdmin', EmpinInfo)
+                axios.post('https://assetmanagement-xi.vercel.app/adddAdmin', EmpinInfo)
                     .then(res => {
                         console.log(res.data)
                     })

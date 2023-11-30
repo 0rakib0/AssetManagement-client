@@ -19,7 +19,7 @@ const MyEmployees = () => {
 
 
     const handleDeleteTeam = (id, EmId) =>{
-        axios.delete(`http://localhost:5000/remove-emplyees/${id}?employeId=${EmId}`)
+        axios.delete(`https://assetmanagement-xi.vercel.app/remove-emplyees/${id}?employeId=${EmId}`)
         .then(res =>{
             console.log(res.data)
             refetch()

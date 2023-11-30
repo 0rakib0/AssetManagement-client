@@ -47,7 +47,7 @@ const AssetList = () => {
     }
 
     const handleDelete = (id => {
-        axios.delete(`http://localhost:5000/delete-asset/${id}`)
+        axios.delete(`https://assetmanagement-xi.vercel.app/delete-asset/${id}`)
             .then(res => {
                 if (res.data.deletedCount) {
                     Swal.fire({

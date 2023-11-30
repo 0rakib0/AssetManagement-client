@@ -23,7 +23,7 @@ const AllRequest = () => {
     })
 
     const handleAprove = id => {
-        axios.put(`http://localhost:5000/aprove-request/${id}`)
+        axios.put(`https://assetmanagement-xi.vercel.app/aprove-request/${id}`)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
@@ -50,7 +50,7 @@ const AllRequest = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cansel-requst/${id}`)
+                axios.delete(`https://assetmanagement-xi.vercel.app/cansel-requst/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

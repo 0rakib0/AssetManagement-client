@@ -62,7 +62,7 @@ import Error from "../Shared/Error";
         },
         {
           path:'/dashbord',
-          element: <HomeDashbord></HomeDashbord>
+          element: <PrivatRouts><HomeDashbord></HomeDashbord></PrivatRouts>
         },
         {
           path:'asset-list',
@@ -90,7 +90,7 @@ import Error from "../Shared/Error";
         },
         {
           path:'all-request',
-          element: <AllRequest></AllRequest>
+          element: <PrivatRouts><AllRequest></AllRequest></PrivatRouts>
         },
         {
           path:'custom-request',
@@ -114,7 +114,7 @@ import Error from "../Shared/Error";
         },
         {
           path:'profile',
-          element: <Profile></Profile>
+          element: <PrivatRouts><Profile></Profile></PrivatRouts>
         }
       ]
     }

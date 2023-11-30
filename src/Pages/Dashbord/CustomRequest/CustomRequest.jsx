@@ -30,7 +30,7 @@ const CustomRequest = () => {
             requestDate: new (Date)
         }
 
-        axios.post('http://localhost:5000/custom-Request', customRequest)
+        axios.post('https://assetmanagement-xi.vercel.app/custom-Request', customRequest)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

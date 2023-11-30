@@ -48,7 +48,7 @@ const Login = () => {
                     full_name: user.displayName
                 }
 
-                axios.post('http://localhost:5000/adddAdmin', userInfo)
+                axios.post('https://assetmanagement-xi.vercel.app/adddAdmin', userInfo)
                     .then(res => {
                         console.log(res.data)
                     })

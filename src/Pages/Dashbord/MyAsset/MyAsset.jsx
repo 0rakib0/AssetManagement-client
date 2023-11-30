@@ -57,7 +57,7 @@ const MyAsset = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cansel-requst/${id}`)
+                axios.delete(`https://assetmanagement-xi.vercel.app/cansel-requst/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -76,7 +76,7 @@ const MyAsset = () => {
     }
 
     const handleReturn = (id, id2) => {
-        axios.put(`http://localhost:5000/update-request/${id}?assetId=${id2}`)
+        axios.put(`https://assetmanagement-xi.vercel.app/update-request/${id}?assetId=${id2}`)
             .then(res => {
                 if (res.data.result.modifiedCount) {
                     Swal.fire({

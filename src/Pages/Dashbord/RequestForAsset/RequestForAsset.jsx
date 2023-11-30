@@ -67,7 +67,7 @@ const RequestForAsset = () => {
             isAprove: false,
             requetDate: new Date()
         }
-        axios.post('http://localhost:5000/send-request', SendRequest)
+        axios.post('https://assetmanagement-xi.vercel.app/send-request', SendRequest)
             .then(res => {
                 if (res.data.result.insertedId) {
                     Swal.fire({

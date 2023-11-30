@@ -29,7 +29,7 @@ const AllCustomRequest = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cansel-custom-requst/${id}`)
+                axios.delete(`https://assetmanagement-xi.vercel.app/cansel-custom-requst/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -49,7 +49,7 @@ const AllCustomRequest = () => {
 
 
     const handleAprove = id => {
-        axios.put(`http://localhost:5000/update-custom-request/${id}`)
+        axios.put(`https://assetmanagement-xi.vercel.app/update-custom-request/${id}`)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({

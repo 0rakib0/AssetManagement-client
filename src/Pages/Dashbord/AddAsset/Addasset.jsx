@@ -29,7 +29,7 @@ const Addasset = () => {
             addedDate: new Date()
         }
 
-        axios.post('http://localhost:5000/add-asset', asset)
+        axios.post('https://assetmanagement-xi.vercel.app/add-asset', asset)
         .then(res => {
             if(res.data.insertedId){
                 Swal.fire({

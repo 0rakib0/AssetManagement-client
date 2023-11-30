@@ -26,7 +26,7 @@ const AddEmployee = () => {
             adminEmail: user?.email
         }
 
-        axios.post('http://localhost:5000/add-employee', MyTeam)
+        axios.post('https://assetmanagement-xi.vercel.app/add-employee', MyTeam)
             .then(res => {
                 if (res.data.result.insertedId) {
                     Swal.fire({
