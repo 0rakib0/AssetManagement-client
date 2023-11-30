@@ -1,11 +1,14 @@
-import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList, FaBezierCurve } from "react-icons/fa";
+import { FaCookieBite, FaLuggageCart, FaTh, FaCartArrowDown, FaCog, FaSignOutAlt, FaClipboardCheck, FaUsers, FaUserPlus, FaClipboardList, FaBezierCurve, FaUser } from "react-icons/fa";
 import { NavLink, } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 import useAuth from "../../Hooks/useAuth";
+import useUserInfo from "../../Hooks/useUserInfo";
 
 const SideBar = () => {
     const {user} = useAuth()
 
+    const userInfo = useUserInfo()
+    console.log(userInfo)
     const [isAdmin, adminLoading] = useAdmin()
     if(adminLoading){
         return 'Loadin......'
@@ -21,8 +24,8 @@ const SideBar = () => {
                         <img src={user.photoURL} />
                     </div>
                 </div>
-                <div className="px-4 mt-4 text-white">
-                    <h3 className="text-lg font-bold">{user?.displayName}</h3>
+                <div className=" mt-4 text-white">
+                    <h3 className="text-lg font-bold">{userInfo?.full_name}</h3>
                     <p className="text-center">{isAdmin2 ? "Admin":"Employee"}</p>
                 </div>
 
@@ -50,6 +53,7 @@ const SideBar = () => {
                         <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
 
                         <li> <NavLink className='flex gap-3 items-center'><FaSignOutAlt className="text-sky-300 text-2xl"></FaSignOutAlt>Logout</NavLink></li>
+                        <li> <NavLink className='flex gap-3 items-center' to='profile'><FaUser className="text-sky-300 text-2xl"></FaUser>Profile</NavLink></li>
                         <li>Others Page</li>
                     </>
 
@@ -71,6 +75,7 @@ const SideBar = () => {
                             <li> <NavLink className='flex gap-3 items-center'><FaCog className="text-sky-500 text-2xl"></FaCog>Settings</NavLink></li>
 
                             <li> <NavLink className='flex gap-3 items-center'><FaSignOutAlt className="text-sky-300 text-2xl"></FaSignOutAlt>Logout</NavLink></li>
+                            <li> <NavLink className='flex gap-3 items-center' to='profile'><FaSignOutAlt className="text-sky-300 text-2xl"></FaSignOutAlt>Profile</NavLink></li>
                             <li>Others Page</li>
                         </>
 

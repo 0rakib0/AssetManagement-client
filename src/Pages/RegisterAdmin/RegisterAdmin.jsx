@@ -22,6 +22,7 @@ const RegisterAdmin = () => {
         const memberpackage = form.package.value
 
         const AdminInfo = {
+            full_name,
             companyName,
             email,
             memberpackage,

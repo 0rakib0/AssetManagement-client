@@ -47,7 +47,7 @@ const NavBar = () => {
             </div>
             {user && <>
                 <div className="navbar-end mr-6">
-                    <a className="btn">{user?.email}</a>
+                    <a className="btn">{user?.displayName}</a>
                 </div>
                 <div className="avatar">
                     <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

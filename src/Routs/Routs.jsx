@@ -23,6 +23,7 @@ import PrivatRouts from "./PrivatRouts";
 import AdminRouts from "./AdminRouts";
 import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
 import Payment from "../Pages/Dashbord/Payment/Payment";
+import Profile from "../Pages/Dashbord/Profile/Profile";
 
 
   const router = createBrowserRouter([
@@ -107,6 +108,10 @@ import Payment from "../Pages/Dashbord/Payment/Payment";
         {
           path:'payment', 
           element: <Payment></Payment>
+        },
+        {
+          path:'profile',
+          element: <Profile></Profile>
         }
       ]
     }
