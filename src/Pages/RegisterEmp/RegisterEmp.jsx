@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase.config";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 
 const RegisterEmp = () => {
@@ -78,6 +79,10 @@ const RegisterEmp = () => {
 
     return (
         <div className="hero min-h-screen bg-SecondariColor w-11/12 mx-auto m-6 rounded-lg">
+            <Helmet>
+                <title>Dashbord | Employee Register</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center h-full lg:text-left w-6/12 rounded-lg">
                     <img src="https://previews.123rf.com/images/microbagrandioza/microbagrandioza1810/microbagrandioza181000022/114029529-businessman-office-worker-worker-at-workplace-at-morning-working-day-concept-vector-flat-cartoon.jpg" className="h-full w-full rounded-lg" alt="" />

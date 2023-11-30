@@ -24,12 +24,14 @@ import AdminRouts from "./AdminRouts";
 import HomeDashbord from "../Pages/Dashbord/HomeDashbord/HomeDahsbord";
 import Payment from "../Pages/Dashbord/Payment/Payment";
 import Profile from "../Pages/Dashbord/Profile/Profile";
+import Error from "../Shared/Error";
 
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Roots></Roots>,
+      errorElement: <Error></Error>,
       children: [
         {
             path:'',
@@ -52,6 +54,7 @@ import Profile from "../Pages/Dashbord/Profile/Profile";
     {
       path:'/dashbord',
       element:<PrivatRouts><Dashbord></Dashbord></PrivatRouts>,
+      errorElement: <Error></Error>,
       children:[
         {
           path:'add-asset',

@@ -4,6 +4,7 @@ import auth from "../../firebase.config";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const RegisterAdmin = () => {
 
@@ -80,6 +81,10 @@ const RegisterAdmin = () => {
 
     return (
         <div className="hero min-h-screen bg-SecondariColor w-11/12 mx-auto m-6 rounded-lg">
+            <Helmet>
+                <title>Dashbord | Admin register</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center h-full lg:text-left w-6/12 rounded-lg">
                     <img src="https://previews.123rf.com/images/naum100/naum1001610/naum100161000080/64589806-man-working-on-laptop-computer-businessman-with-idea-and-gears-cartoon-vector-illustration.jpg" className="h-full w-full rounded-lg" alt="" />

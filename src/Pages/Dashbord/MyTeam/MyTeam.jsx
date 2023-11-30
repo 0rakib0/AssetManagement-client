@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { Helmet } from "react-helmet-async";
 
 const MyTeam = () => {
 
@@ -62,6 +63,10 @@ const MyTeam = () => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>Dashbord | My Team</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-3/12 mx-auto uppercase pb-4">My Team</h2>
             <div className="md:mt-8 md:mx-6">
                 <div className="overflow-x-auto">

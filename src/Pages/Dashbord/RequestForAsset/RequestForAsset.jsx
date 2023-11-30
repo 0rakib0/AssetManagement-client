@@ -5,6 +5,7 @@ import useAuth from "../../../Hooks/useAuth"
 import moment from "moment"
 import axios from "axios"
 import Swal from "sweetalert2"
+import { Helmet } from "react-helmet-async"
 
 const RequestForAsset = () => {
 
@@ -84,6 +85,10 @@ const RequestForAsset = () => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>Dashbord | Requst for asset</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-4/12 mx-auto uppercase pb-4">Request For Asset</h2>
 
             <div className='md:flex items-center justify-evenly'>

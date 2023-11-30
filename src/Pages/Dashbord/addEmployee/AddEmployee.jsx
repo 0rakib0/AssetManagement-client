@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAdminInfo from "../../../Hooks/useAdminInfo";
+import { Helmet } from "react-helmet-async";
 
 
 const AddEmployee = () => {
@@ -46,14 +47,18 @@ const AddEmployee = () => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>Dashbord | Add Employee</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-4/12 mx-auto uppercase pb-4">Add Employee</h2>
             <div className="mx-6 flex md:gap-12 my-6 justify-center">
                 <div>
-                    <p className="text-xl text-primaryColor fornt-semibold">Total Employee: {emplyee.length}
+                    <p className="text-xl text-primaryColor fornt-semibold">Total Employee: {emplyee?.length}
                     </p>
                 </div>
                 <div>
-                    <p className="text-xl text-primaryColor fornt-semibold">Your Selected Pachage: {adminInfo.memberpackage}</p>
+                    <p className="text-xl text-primaryColor fornt-semibold">Your Selected Pachage: {adminInfo?.memberpackage}</p>
                 </div>
                 <div>
                     <button className="bg-primaryColor p-2 text-white rounded-lg">Update Package</button>

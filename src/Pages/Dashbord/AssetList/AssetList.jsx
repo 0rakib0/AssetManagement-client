@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 const AssetList = () => {
 
     const axiosSecure = useAxiosSecure()
@@ -63,6 +64,10 @@ const AssetList = () => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>Dashbord | Asset list</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-4/12 mx-auto uppercase pb-4">My Asset List</h2>
 
             <div className='md:flex items-center justify-evenly'>
@@ -81,13 +86,14 @@ const AssetList = () => {
 
                 <div>
                     <select onChange={handleTypeSelect} name="asetType" className='border-2 border-primaryColor rounded-lg px-8 py-2'>
-                        <option value="" hidden>Select Type</option>
+                        <option value="">All</option>
+                        <option value="InStock">In Stock</option>
+                        <option value="outofstock">Out Of Stock</option>
                         <option value="returnable">Returnable</option>
                         <option value="nonreturnable">Non-Returnable</option>
                     </select>
                 </div>
             </div>
-
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

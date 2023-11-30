@@ -7,29 +7,32 @@ import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import { useEffect, useState } from "react";
 import useAdminInfo from "../../../Hooks/useAdminInfo";
 import { useNavigate } from "react-router-dom";
+import useUserInfo from "../../../Hooks/useUserInfo";
+import { Helmet } from "react-helmet-async";
 
 const HomeDashbord = () => {
     const [isAdmin, adminLoading] = useAdmin()
     const AdminInfo = useAdminInfo()
+    const userInfo = useUserInfo()
     if (adminLoading) {
         return 'Loadin......'
     }
 
     const [returnabl, setReturnable] = useState()
     const [nonreturnabl, setNonReturnable] = useState()
-    
-    
+
+
     const { user } = useAuth()
     const secureAxios = useAxiosSecure()
     const isAdmin2 = isAdmin
-    const  navigate = useNavigate()
+    const navigate = useNavigate()
     // Admin Dashbord Section
 
-    
 
 
-    if(isAdmin2){
-        if(AdminInfo?.isPaid === false){
+
+    if (isAdmin2) {
+        if (AdminInfo?.isPaid === false) {
             navigate('dashbord/payment')
         }
     }
@@ -153,6 +156,11 @@ const HomeDashbord = () => {
 
     return (
         <div className="mt-12 pl-8">
+            <Helmet>
+                <title>Dashbord | Home</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
+
             {isAdmin2 ?
                 <div className="m-6">
                     <div className="grid md:grid-cols-4 gap-4 text-center text-white mb-4">
@@ -385,7 +393,7 @@ const HomeDashbord = () => {
                 :
 
                 <div>
-                    <div>
+                    {userInfo?.inTeam ? <div>
                         <div className="grid md:grid-cols-3 gap-4 text-center text-white mb-4">
                             <div className="bg-thirdColor py-4 rounded-lg">
                                 <p className="text-5xl font-bold">{customrequest?.length}</p>
@@ -470,9 +478,7 @@ const HomeDashbord = () => {
                                             <td>{request.singleAsset.assetType}</td>
                                             <td>{request.userEmail}</td>
                                             <td>{moment(request.requetDate).format('DD-MM-YYY')}</td>
-                                            {request.isAprove ? <td className="bg-green-300 rounded-lg">Aproved</td> :
-                                                <td className="bg-yellow-300 rounded-lg">Pending</td>
-                                            }
+                                            <td className="bg-yellow-300 rounded-lg">Pending</td>
 
 
                                         </tr>)
@@ -480,7 +486,9 @@ const HomeDashbord = () => {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> :
+                        <h1 className="mt-12 text-center text-red-400 text-xl font-bold">You rae not in a team please contact with HR/Admin</h1>
+                    }
                 </div>}
         </div>
     )

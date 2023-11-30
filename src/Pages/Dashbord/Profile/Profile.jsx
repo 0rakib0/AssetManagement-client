@@ -1,6 +1,7 @@
 import Swal from "sweetalert2"
 import useAxiosSecure from "../../../Hooks/useAxiosSecure"
 import useUserInfo from "../../../Hooks/useUserInfo"
+import { Helmet } from "react-helmet-async"
 
 const Profile = () => {
     const userInfo = useUserInfo()
@@ -34,6 +35,10 @@ const Profile = () => {
 
     return (
         <div className="mt-12 ml-12 w-3/4">
+            <Helmet>
+                <title>Dashbord | Profile</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h1 className="text-center text-xl">Update Profile</h1>
             <form onSubmit={handleSubmit}>
                 <label className="form-control w-full">

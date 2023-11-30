@@ -2,6 +2,7 @@ import Swal from "sweetalert2"
 import useAuth from "../../Hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { Helmet } from "react-helmet-async"
 
 const Login = () => {
     const { Login, googleLogin } = useAuth()
@@ -60,6 +61,10 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-SecondariColor md:w-11/12 mx-auto m-6 rounded-lg">
+            <Helmet>
+                <title>Dashbord | Login</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center h-full lg:text-left md:w-6/12 rounded-lg">
                     <img src="https://previews.123rf.com/images/microbagrandioza/microbagrandioza1810/microbagrandioza181000022/114029529-businessman-office-worker-worker-at-workplace-at-morning-working-day-concept-vector-flat-cartoon.jpg" className="h-full w-full rounded-lg" alt="" />

@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const Addasset = () => {
@@ -49,6 +50,10 @@ const Addasset = () => {
 
     return (
         <div className="mt-4">
+            <Helmet>
+                <title>Dashbord | Add Asset</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-4/12 mx-auto uppercase pb-4">Add New Asset</h2>
             <div className="mx-auto m-6 rounded-lg">
                 <div className="hero-content flex-col lg:flex-row">

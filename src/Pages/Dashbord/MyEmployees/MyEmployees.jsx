@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const MyEmployees = () => {
 
@@ -29,6 +30,10 @@ const MyEmployees = () => {
 
     return (
         <div className='mt-4'>
+            <Helmet>
+                <title>Dashbord | My Employee</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-4/12 mx-auto uppercase pb-4">My Employee List</h2>
 
             <h3 className="text-center mt-6 text-2xl font-bold">Total Employee: {Employees?.length}</h3>

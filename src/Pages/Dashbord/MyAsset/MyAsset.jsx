@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import DownloadPDF from "./DownloadPDF";
+import { Helmet } from "react-helmet-async";
 
 
 const MyAsset = () => {
@@ -97,6 +98,10 @@ const MyAsset = () => {
 
     return (
         <div className="mt-6">
+            <Helmet>
+                <title>Dashbord | My Asset</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-2/12 mx-auto uppercase pb-4">My Asset</h2>
 
             <div className='md:flex items-center justify-evenly'>

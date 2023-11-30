@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const CustomRequest = () => {
@@ -49,6 +50,10 @@ const CustomRequest = () => {
 
     return (
         <div className="mt-6">
+            <Helmet>
+                <title>Dashbord | Send Custom Request</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <h2 className="text-center text-4xl border-b-2 border-primaryColor w-6/12 mx-auto uppercase pb-4">Make a Custom Request</h2>
 
             <div className="mx-auto m-6 rounded-lg">
