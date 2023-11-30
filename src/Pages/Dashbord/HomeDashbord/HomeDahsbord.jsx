@@ -5,20 +5,35 @@ import moment from "moment";
 import useAuth from "../../../Hooks/useAuth";
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import { useEffect, useState } from "react";
+import useAdminInfo from "../../../Hooks/useAdminInfo";
+import { useNavigate } from "react-router-dom";
 
 const HomeDashbord = () => {
     const [isAdmin, adminLoading] = useAdmin()
+    const AdminInfo = useAdminInfo()
     if (adminLoading) {
         return 'Loadin......'
     }
 
     const [returnabl, setReturnable] = useState()
     const [nonreturnabl, setNonReturnable] = useState()
-
-
+    
+    
     const { user } = useAuth()
     const secureAxios = useAxiosSecure()
+    const isAdmin2 = isAdmin
+    const  navigate = useNavigate()
     // Admin Dashbord Section
+
+    
+
+
+    if(isAdmin2){
+        if(AdminInfo?.isPaid === false){
+            navigate('dashbord/payment')
+        }
+    }
+
 
     const { data: PendingRequest, isLoading } = useQuery({
         queryKey: 'reqquest',
@@ -136,7 +151,6 @@ const HomeDashbord = () => {
 
 
 
-    const isAdmin2 = isAdmin
     return (
         <div className="mt-12 pl-8">
             {isAdmin2 ?

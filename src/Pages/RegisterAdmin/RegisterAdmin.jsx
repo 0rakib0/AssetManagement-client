@@ -26,7 +26,8 @@ const RegisterAdmin = () => {
             email,
             memberpackage,
             dob,
-            isAdmin: true
+            isAdmin: true,
+            isPaid: false
         }
         console.log(AdminInfo)
         Register(email, password)
