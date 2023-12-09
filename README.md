@@ -1,5 +1,6 @@
 ## Asset Management System 
-assignment12_category_0006
+Admin Email: shathi@gmail.com
+Admin Pasword: r6167300R@@
 
 [Website Live Link](https://6568896375ea02006e663a8b--aquamarine-granita-b17a72.netlify.app/)
 
